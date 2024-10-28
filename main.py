@@ -9,11 +9,16 @@ def main():
     spark = SparkSession.builder.master("local[*]").appName("Exemplo").config('spark.sql.repl.eagerEval.enabled', True).getOrCreate()
 
     #extract
-    logins = spark.read.csv(r"C:\Users\ricar\Desktop\AplicaçãoPySpark\docs\DATASETS\DATASETS\LOGINS.csv",header=True, inferSchema = True, sep= ";") 
+    logins = spark.read.csv(r".\docs\DATASETS\DATASETS\LOGINS.csv",header=True, inferSchema = True, sep= ";") 
     
     #transform
     cor_select_user = teste_transform(df=logins)
     cor_select_user.write.format("console").save()
+
+    #load
+    cor_select_user.write.format("csv").mode("overwrite").save(sys.argv[1])
+
+
     spark.stop()
 
 if __name__ == "__main__":
