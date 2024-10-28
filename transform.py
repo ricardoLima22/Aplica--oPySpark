@@ -28,7 +28,7 @@ def teste_transform(df):
     logins = (
         idade
         .select(
-            F.col("email").alias("nome"), F.col("cpf"),  F.col("idade"), F.col("estado"), F.col("cor_favorita"), F.col("profissao"), F.col("telefone")
+            F.col("email").alias("nome"), F.col("idade"), F.col("cpf"), F.col("estado"), F.col("cor_favorita"), F.col("profissao"), F.col("telefone")
         )
     )
     
