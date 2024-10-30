@@ -9,7 +9,8 @@ def main():
     spark = SparkSession.builder.master("local[*]").appName("Exemplo").config('spark.sql.repl.eagerEval.enabled', True).getOrCreate()
 
     #extract
-    logins = spark.read.csv(r".\docs\DATASETS\DATASETS\LOGINS.csv",header=True, inferSchema = True, sep= ";") 
+
+    logins = spark.read.csv(r".\docs\LOGINS.csv",header=True, inferSchema = True, sep= ";") 
     
     #transform
     cor_select_user = teste_transform(df=logins)
