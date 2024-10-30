@@ -17,13 +17,11 @@ def teste_transform(df):
         transform_email
         .withColumn("telefone", F.regexp_replace(F.col("telefone"), "(\D)",""))
     )
-    transform_tel.show()
 
     idade = (
         transform_tel.withColumn("idade", F.datediff(F.current_date(), F.col("data_de_nascimento"))/365)
         .withColumn("idade", F.col("idade").cast("int"))
     )
-    idade.show()
 
     logins = (
         idade
